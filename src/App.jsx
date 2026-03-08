@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-const API_BASE = "";
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
 
 const initialStudents = { name: "", email: "", phone: "", branch: "", cgpa: "", graduation_year: "" };
 const initialCompany = { company_name: "", location: "", min_cgpa: "" };
