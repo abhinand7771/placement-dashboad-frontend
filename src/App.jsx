@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+const API_BASE =
+  import.meta.env.VITE_API_BASE_URL || "https://placement-backend-2.onrender.com";
 
 const initialStudents = { name: "", email: "", phone: "", branch: "", cgpa: "", graduation_year: "" };
 const initialCompany = { company_name: "", location: "", min_cgpa: "" };
