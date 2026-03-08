@@ -1,7 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 
-
-const API_BASE = import.meta.env.VITE_API_BASE_URL || "https://backend-3-f4wk.onrender.com";
+const API_BASE = "";
 
 const initialStudents = { name: "", email: "", phone: "", branch: "", cgpa: "", graduation_year: "" };
 const initialCompany = { company_name: "", location: "", min_cgpa: "" };
@@ -108,8 +107,15 @@ function App() {
   }, [students]);
 
   const api = async (path, options = {}) => {
+    const headers = new Headers(options.headers || {});
+    const hasBody = options.body !== undefined && !(options.body instanceof FormData);
+
+    if (hasBody && !headers.has("Content-Type")) {
+      headers.set("Content-Type", "application/json");
+    }
+
     const res = await fetch(`${API_BASE}${path}`, {
-      headers: { "Content-Type": "application/json" },
+      headers,
       ...options,
     });
     const data = await res.json().catch(() => ({}));
